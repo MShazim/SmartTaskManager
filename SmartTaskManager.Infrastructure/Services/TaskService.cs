@@ -34,6 +34,7 @@ namespace SmartTaskManager.Infrastructure.Services
                 UpdatedAt = DateTime.UtcNow,
             };
 
+            _context.Tasks.Add(task);
             await _context.SaveChangesAsync();
 
             return task.TaskId;

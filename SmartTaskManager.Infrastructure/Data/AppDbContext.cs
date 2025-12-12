@@ -16,5 +16,14 @@ namespace SmartTaskManager.Infrastructure.Data
         public DbSet<TaskItem> Tasks { get; set; }
         //public DbSet<TaskNote> TaskNotes { get; set; }
         //public DbSet<AuditLog> AuditLogs { get; set; }
+
+
+        // Telling EF Core the key explicitly
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<TaskItem>().HasKey(t => t.TaskId);
+        }
     }
 }
